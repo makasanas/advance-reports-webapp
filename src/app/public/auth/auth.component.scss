@@ -1,0 +1,12 @@
+p {
+    position: absolute;
+    top: calc(50% + 70px);
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 400;
+    color: #5e637b;
+}
+
+.content {
+    height: 100vh;
+}

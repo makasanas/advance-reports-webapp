@@ -1,0 +1,111 @@
+.faq-container {
+    >h1 {
+        font-size: 34px;
+        text-align: left;
+        padding-left: 10px;
+        padding-bottom: 20px;
+        font-weight: 500;
+        @media screen and (max-width:767px) {
+            font-size: 30px;
+        }
+    }
+
+    .sub-title {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding-bottom: 10px;
+    }
+
+    ul {
+        margin-bottom: 40px;
+        li {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 0px;
+            padding: 20px 10px;
+            border-bottom: 1px solid #e6e6e6;
+            position: relative;
+            padding-right: 50px;
+            cursor: pointer;
+            .title {
+                h4 {
+                    font-weight: normal;
+                    text-align: left;
+                }
+            }
+            .f-content {
+                display: none;
+                .ans {
+                    margin-bottom: 0px;
+                    text-align: left;
+                    color: #7d7d7d;
+                }
+            }
+            .indicator {
+                height: 30px;
+                width: 30px;
+                position: absolute;
+                top: 50%;
+                right: 10px;
+                -webkit-transform: translateY(-50%) rotate(0deg);
+                transform: translateY(-50%) rotate(0deg);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                svg {
+                    height: 20px;
+                    width: 20px;
+                }
+            }
+            &.active {
+                .title {
+                    h4 {
+                        padding-bottom: 10px;
+                    }
+                }
+
+                .f-content {
+                    display: block;
+                }
+
+                .indicator {
+                    transform: translateY(-50%) rotate(180deg);
+                }
+            }
+        }
+    }
+    .contact-div {
+        display: flex;
+        align-items: center;
+        padding-left: 10px;
+        margin-bottom: 40px;
+        @media screen and (max-width:767px) {
+            flex-direction: column;
+            flex-wrap: initial;
+            align-items: flex-start;
+        }
+        .line {
+            margin-right: 40px;
+
+            label {
+                font-weight: bold;
+            }
+
+            span {
+                color: rgb(139, 139, 139);
+                margin-left: 10px;
+            }
+        }
+    }
+}
+
+.form{
+    margin: 0px;
+    .form-field{
+        textarea{
+            height: 100px;
+        }
+    }
+}

@@ -1,0 +1,206 @@
+<div class="tab-container">
+  <div class="tabs">
+    <div
+      class="tab"
+      *ngFor="let tab of tabs.list; let i = index"
+      (click)="changeTab(tab.tab)"
+      [ngClass]="tabs.activeTab == tab.tab ? 'active' : ''"
+    >
+      {{ tab.label }}
+    </div>
+  </div>
+  <div class="content">
+    <div class="tab-content" *ngIf="tabs.activeTab === 'details'">
+      <div class="settings">
+        <div class="form mobile-view">
+          <h2>App Status</h2>
+          <div class="notification subscription-wrapper">
+            <div class="switch-btn">
+              <form [formGroup]="appForm">
+                <div
+                  class="switch"
+                  [ngClass]="{
+                    disableBtn: appForm.controls.appEnabled.value == false
+                  }"
+                >
+                  <input
+                    type="checkbox"
+                    id="1switch"
+                    formControlName="appEnabled"
+                    (change)="statusChanged($event)"
+                  /><label for="1switch">Toggle</label>
+                  <p>App status</p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="form">
+          <h2>My Profile</h2>
+          <div class="notification subscription-wrapper">
+            <div class="field-list">
+              <label>Organisation Name :</label>
+              <div class="plan-name">{{ storeData.storeName }}</div>
+            </div>
+            <div class="field-list">
+              <label>Shop URL:</label>
+              <div class="plan-name">{{ storeData.shopUrl }}</div>
+            </div>
+            <div class="field-list">
+              <label>Email ID :</label>
+              <div class="plan-name">{{ storeData.email }}</div>
+            </div>
+            <div class="field-list">
+              <label>Phone Number :</label>
+              <div class="plan-name">{{ storeData.phone }}</div>
+            </div>
+            <div class="field-list">
+              <label>Country :</label>
+              <div class="plan-name">{{ storeData.country_name }}</div>
+            </div>
+            <div class="field-list">
+              <label>Currency :</label>
+              <div class="plan-name">{{ storeData.currency }}</div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="form">
+          <h2>My Subscription</h2>
+          <div class="notification subscription-wrapper">
+            <div class="field-list">
+              <label>Subscription Name :</label>
+              <div class="plan-name">{{storeData.recurringPlanName}}</div>
+            </div>
+            <div class="subscription">
+              <button [routerLink]="['/pricing']">Upgrade</button>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+    <div class="tab-content" *ngIf="tabs.activeTab === 'sync'">
+      <div class="notification sync-block">
+        <div class="row">
+          <div class="data">
+            <div class="data-row">
+              <label>Count</label>
+              <div class="text">
+                <span *ngIf="syncData">
+                  <span *ngIf="syncData.orderSync">
+                    <span *ngIf="syncData.orderSync.count">
+                      {{ syncData.orderSync.count }}
+                    </span>
+                    <span *ngIf="!syncData.orderSync.count"> - </span>
+                  </span>
+                  <span *ngIf="!syncData.orderSync">
+                    <span class="no-data-text"> - No data </span>
+                  </span>
+                </span>
+                <span *ngIf="!syncData">
+                  <span class="no-data-text"> - No data </span>
+                </span>
+              </div>
+            </div>
+            <div class="data-row">
+              <label>Last sync</label>
+              <div class="text">
+                <span *ngIf="syncData">
+                  <span *ngIf="syncData.orderSync">
+                    <span *ngIf="syncData.orderSync.lastSync">
+                      {{ syncData.orderSync.lastSync | date: "medium" }}
+                    </span>
+                    <span *ngIf="!syncData.orderSync.lastSync"> - </span>
+                  </span>
+                  <span *ngIf="!syncData.orderSync">
+                    <span class="no-data-text"> - No data </span>
+                  </span>
+                </span>
+                <span *ngIf="!syncData">
+                  <span class="no-data-text"> - No data </span>
+                </span>
+              </div>
+            </div>
+            <div class="data-row">
+              <label>Status</label>
+              <span *ngIf="syncData">
+                <span *ngIf="syncData.orderSync">
+                  <span *ngIf="syncData.orderSync.status">
+                    {{ syncData.orderSync.status }}
+                  </span>
+                  <span *ngIf="!syncData.orderSync.status"> - </span>
+                </span>
+                <span *ngIf="!syncData.orderSync">
+                  <span class="no-data-text"> - No data </span>
+                </span>
+              </span>
+              <span *ngIf="!syncData">
+                <span class="no-data-text"> - No data </span>
+              </span>
+            </div>
+          </div>
+          <div class="actions">
+            <div
+              class="btn"
+              (click)="syncOrders()"
+              [ngClass]="{ 'is-loading': syncProcess.products }"
+            >
+              <span>Sync Order</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 
+      <div class="heading d-flex-between">
+        <h2>Sync</h2>
+        <div class="subscription">
+          <button (click)="syncProducts()">Sync Products</button>
+        </div>
+      </div>
+      <div class="settings">
+        <div class="form">
+          <h2>Sync Details</h2>
+          <div class="subscription-wrapper" *ngIf="!loading">
+            <div class="field-list">
+              <label>Count:</label>
+              <div class="plan-name">{{ syncData.productSync.count }}</div>
+            </div>
+            <div class="field-list">
+              <label>Last Sync:</label>
+              <div class="plan-name">
+                {{ syncData.productSync.lastSync | date: "medium" }}
+              </div>
+            </div>
+            <div class="field-list">
+              <label>Status:</label>
+              <div class="plan-name">{{ syncData.productSync.status }}</div>
+            </div>
+          </div>
+          <div class="subscription-wrapper loading" *ngIf="loading">
+            <label for="">Please Wait until products are synced</label>
+            <app-loading></app-loading>
+          </div>
+        </div>
+      </div> -->
+      <!-- </div>
+</div>
+</div> -->
+
+      <div class="overlay" [ngClass]="{ active: planError == true }">
+        <div class="popup" *ngIf="planError == true">
+          <h3>Upgrade Plan to countinue</h3>
+          <a class="close" (click)="changeBoolean('planError', false)"
+            >&times;</a
+          >
+          <div class="content">
+            You need to Upgrade your plan to continue using our app.
+          </div>
+          <div class="flex align-items-center justify-content-center">
+            <button class="btn" [routerLink]="['/pricing']">
+              <span>Goto Pricing</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

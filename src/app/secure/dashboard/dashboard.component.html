@@ -1,0 +1,67 @@
+<div class="dashboad-content">
+    <div class="week-data">
+        <h3>This Week</h3>
+        <div class="week-content">
+            <div class="wrapper week">
+                <h3>Profit Gain</h3>
+                <p class="pink-text">32%</p>
+            </div>
+            <div class="wrapper week">
+                <h3>New customer</h3>
+                <p class="purple-text">234</p>
+            </div>
+            <div class="wrapper week">
+                <h3>Bargain Bot Products</h3>
+                <p class="green-text">20</p>
+            </div>
+
+        </div>
+    </div>
+    <div class="week-data">
+        <div class="week-content infograph">
+            <div class="infograph-content">
+                <div class="infograph-title">
+                    <h3>Selling</h3>
+                    <div class="dropdown">
+                        <select>
+                            <option value="lastweek">Last 10 Days</option>
+                            <option value="lastmonth">Last month</option>
+                            <option value="all" selected>All</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="wrapper infograph-wrapper">
+                    <div>
+                        <div style="display: block">
+                            <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels"
+                                [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend"
+                                [chartType]="barChartType">
+                            </canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="infograph-content">
+                <div class="infograph-title">
+                    <h3>Customer per product</h3>
+                    <div class="dropdown">
+                        <select>
+                            <option value="lastweek">Last 10 Days</option>
+                            <option value="lastmonth">Last month</option>
+                            <option value="all" selected>All</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="wrapper infograph-wrapper">
+                    <div class="chart">
+                        <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
+                            [options]="pieChartOptions" [plugins]="pieChartPlugins" [colors]="pieChartColors"
+                            [legend]="pieChartLegend">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

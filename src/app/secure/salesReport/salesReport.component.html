@@ -1,0 +1,334 @@
+<form class="form-inline date-picker-form">
+  <div class="form-group hidden">
+    <div class="input-group">
+      <input
+        name="datepicker"
+        class="form-control hidden-input"
+        ngbDatepicker
+        #datepicker="ngbDatepicker"
+        [autoClose]="'outside'"
+        (dateSelect)="onDateSelection($event)"
+        [displayMonths]="2"
+        [dayTemplate]="t"
+        outsideDays="hidden"
+        [startDate]="fromDate!"
+        tabindex="-1"
+      />
+      <ng-template #t let-date let-focused="focused" class="dropdown-menu">
+        <span
+          class="custom-day"
+          [class.focused]="focused"
+          [class.range]="isRange(date)"
+          [class.faded]="isHovered(date) || isInside(date)"
+          (mouseenter)="hoveredDate = date"
+          (mouseleave)="hoveredDate = null"
+        >
+          {{ date.day }}
+        </span>
+      </ng-template>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="input-group">
+      <input
+        #dpFromDate
+        class="form-control"
+        placeholder="yyyy-mm-dd"
+        name="dpFromDate"
+        [value]="ngbDateParserFormatter.format(fromDate)"
+        (input)="fromDate = validateInput(fromDate, dpFromDate.value)"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary calendar"
+          (click)="datepicker.toggle()"
+          type="button"
+        ></button>
+      </div>
+    </div>
+  </div>
+  <div class="form-group ml-2">
+    <div class="input-group">
+      <input
+        #dpToDate
+        class="form-control"
+        placeholder="yyyy-mm-dd"
+        name="dpToDate"
+        [value]="ngbDateParserFormatter.format(toDate)"
+        (input)="toDate = validateInput(toDate, dpToDate.value)"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary calendar"
+          (click)="datepicker.toggle()"
+          type="button"
+        ></button>
+      </div>
+    </div>
+  </div>
+</form>
+<hr />
+
+<div class="actions end">
+  <button class="btn" (click)="toggleFilterPopUp('isFilterPopUp')">
+    <span>Manage Filters</span>
+  </button>
+
+  <button class="btn" (click)="toggleFilterPopUp('isColumnField')">
+    <span>Edit columns</span>
+  </button>
+</div>
+
+<div class="sales-table">
+  <div class="page-heading">
+    <div class="back-btn" routerLink="/reports">
+      <svg
+        version="1.1"
+        id="Capa_1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        x="0px"
+        y="0px"
+        viewBox="0 0 447.243 447.243"
+        style="enable-background:new 0 0 447.243 447.243;"
+        xml:space="preserve"
+      >
+        <g>
+          <g>
+            <path
+              d="M420.361,192.229c-1.83-0.297-3.682-0.434-5.535-0.41H99.305l6.88-3.2c6.725-3.183,12.843-7.515,18.08-12.8l88.48-88.48
+           c11.653-11.124,13.611-29.019,4.64-42.4c-10.441-14.259-30.464-17.355-44.724-6.914c-1.152,0.844-2.247,1.764-3.276,2.754
+           l-160,160C-3.119,213.269-3.13,233.53,9.36,246.034c0.008,0.008,0.017,0.017,0.025,0.025l160,160
+           c12.514,12.479,32.775,12.451,45.255-0.063c0.982-0.985,1.899-2.033,2.745-3.137c8.971-13.381,7.013-31.276-4.64-42.4
+           l-88.32-88.64c-4.695-4.7-10.093-8.641-16-11.68l-9.6-4.32h314.24c16.347,0.607,30.689-10.812,33.76-26.88
+           C449.654,211.494,437.806,195.059,420.361,192.229z"
+            />
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <h5 class="table-title">{{ reportName }}</h5>
+  </div>
+</div>
+
+<div
+  class="table-responsive"
+  *ngIf="reportRestList.length != 0 && !dataLoading"
+>
+  <ngx-datatable
+    class="material"
+    [rows]="reportRestList"
+    [columns]="tableColumn"
+    [headerHeight]="50"
+    [footerHeight]="50"
+    rowHeight="auto"
+    rowWidth="auto"
+    [reorderable]="true"
+    [scrollbarH]="true"
+  >
+  </ngx-datatable>
+</div>
+
+<div
+  class="overlay"
+  [ngClass]="{
+    active: popup.isFilterPopUp == true
+  }"
+>
+  <div
+    class="popup filter-Popup"
+    [ngClass]="{
+      active: popup.isFilterPopUp == true
+    }"
+  >
+    <div class="popup-header">
+      <p>Mange filter</p>
+    </div>
+    <div class="popup-body">
+      <div class="parallel-Tag-rule">
+        <div class="add-rule-btn">
+          <button
+            class="btn"
+            (click)="addFromArray(nestedRuleForm.controls.compList, 'or')"
+          >
+            <span>{{
+              nestedRuleForm.value.compType === "and"
+                ? "Add parallel AND condition"
+                : "Add parallel OR condition"
+            }}</span>
+          </button>
+        </div>
+        <div>
+          <ul class="tag-rules">
+            <ng-container
+              *ngTemplateOutlet="ruleTemplate; context: nestedRuleForm"
+            ></ng-container>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="catform d-flex align-start justify-center">
+      <button class="btn" (click)="toggleFilterPopUp('isFilterPopUp')">
+        <span>Cancel</span>
+      </button>
+
+      <button class="btn" (click)="applyFilter()">
+        <span>Apply</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div
+  class="overlay"
+  [ngClass]="{
+    active: popup.isColumnField == true
+  }"
+>
+  <div
+    class="popup filter-Popup"
+    [ngClass]="{
+      active: popup.isColumnField == true
+    }"
+  >
+    <div class="popup-header">
+      <p>Columns</p>
+    </div>
+    <div class="popup-body"></div>
+    <div class="catform d-flex align-start justify-center">
+      <div class="parallel-Tag-rule">
+        <div class="add-rule-btn">
+          <button class="btn" (click)="addColumnArray(columnForm)">
+            <span>Add Columns</span>
+          </button>
+        </div>
+        <div>
+          <ul class="tag-rules">
+            <ng-container
+              *ngTemplateOutlet="columnTemplate; context: columnForm"
+            ></ng-container>
+          </ul>
+        </div>
+      </div>
+      <button class="btn" (click)="toggleFilterPopUp('isColumnField')">
+        <span>Cancel</span>
+      </button>
+
+      <button class="btn" (click)="addColumns()">
+        <span>Add columns</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<ng-template #columnTemplate let-controls="controls" let-value="value">
+  <li *ngFor="let control of controls; let i = index" class="inner-tags">
+    <div class="tag-wrapper">
+      <form class="field-row" [formGroup]="control">
+        <div class="item input">
+          <select
+            formControlName="type"
+            (change)="onChangeOrderVariable($event, control)"
+          >
+            <optgroup
+              *ngFor="let dataItem of dataList; let i = index"
+              [label]="dataItem.title"
+            >
+              <option
+                *ngFor="let item of dataItem.subItems; let i = index"
+                value="{{ item.value }}"
+              >
+                {{ item.title }}
+              </option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="item input">
+          <select formControlName="operationType">
+            <option
+              *ngFor="let dataType of compTypes; let i = index"
+              value="{{ dataType.id }}"
+            >
+              {{ dataType.title }}</option
+            >
+          </select>
+        </div>
+      </form>
+    </div>
+  </li>
+</ng-template>
+
+<ng-template #ruleTemplate let-controls="controls" let-value="value">
+  <li
+    *ngFor="let control of controls.compList.controls; let i = index"
+    class="inner-tags"
+  >
+    <div class="tag-line">
+      <span class="mr-1">{{ value.compType }}</span>
+    </div>
+    <div class="tag-wrapper">
+      <form
+        *ngIf="!control.value.isCondition"
+        class="field-row"
+        [formGroup]="control"
+      >
+        <div class="item input">
+          <select
+            formControlName="fieldType"
+            (change)="onChangeOrderVariable($event, control)"
+          >
+            <optgroup
+              *ngFor="let dataItem of dataList; let i = index"
+              [label]="dataItem.title"
+            >
+              <option
+                *ngFor="let item of dataItem.subItems; let i = index"
+                value="{{ item.value }}"
+              >
+                {{ item.title }}
+              </option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="item input">
+          <select formControlName="fieldCondition">
+            <option
+              *ngFor="
+                let dataType of onCompDataTypeChange(control.value.type);
+                let i = index
+              "
+              value="{{ dataType.id }}"
+            >
+              {{ dataType.title }}</option
+            >
+          </select>
+        </div>
+        <div class="item">
+          <input type="text" formControlName="fieldValue" value="static" />
+        </div>
+      </form>
+      <ng-container
+        *ngTemplateOutlet="ruleTemplate; context: control"
+      ></ng-container>
+      <!-- <button
+        class="btn secondary-btn"
+        (click)="
+          removeAddFromArray(
+            controls.compList.controls,
+            i,
+            control.get('compList'),
+            control.value.compType === 'and' ? 'or' : 'and',
+            false
+          )
+        "
+      >
+        <span>{{
+          control.value.compType === "and"
+            ? "Add parallel AND condition"
+            : "Add parallel OR condition"
+        }}</span>
+      </button> -->
+    </div>
+  </li>
+</ng-template>

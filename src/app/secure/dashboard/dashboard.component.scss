@@ -1,0 +1,106 @@
+.dashboad-content {
+    text-align: left;
+}
+.week-data{
+    width: 100%;
+    margin-bottom: 50px;
+}
+h3{
+    @media screen and (max-width:767px) {
+        font-size: 17px;
+        font-weight: 300;
+    }
+}
+.week-content{
+    display: flex;
+    margin: 20px 0;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .week{
+        display: flex;
+        align-items: center;
+        width:calc(33.33% - 10px);
+        justify-content: space-around;
+        @media screen and (max-width:979px) {
+            padding: 10px;
+            margin: 0px;
+            text-align: center;
+        }
+        @media screen and (max-width:767px) {
+            flex-direction: column;
+        }
+        h3{
+            @media screen and (max-width:979px){
+                font-size: 16px;
+                 white-space: nowrap;
+            }
+            @media screen and (max-width:767px){
+                font-weight: 500;
+                font-size: 14px;
+                white-space: unset;
+            }
+        }
+        p{
+            font-size: 48px;
+            margin-left: 20px;
+            font-weight: 300;
+            @media screen and (max-width:979px){
+                font-size: 38px;
+                margin-left: 0px;
+            }
+            @media screen and (max-width:767px){
+                font-size: 28px;
+            }
+        }
+    }
+ 
+}
+.wrapper{
+    padding: 20px 25px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px #00000010;
+    margin-bottom: 20px;
+}
+.infograph{
+    justify-content: space-between;
+    .infograph-content{
+        width: calc(50% - 20px);
+        @media screen and (max-width:979px) {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+        .infograph-title{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            
+        }
+        .infograph-wrapper{
+            margin: 20px 0;
+            align-items: unset;
+            height: 350px;
+        }
+    }
+}
+
+.dropdown{
+    select{
+        width: 120px;
+        height: 30px;
+        border: 1px solid #CDD4E3;
+        background: transparent;
+        font-family: 'poppins';
+        font-size: 14px;
+        font-weight: 100;
+        color: #666;
+        option{
+            background: white;
+        }
+    }
+}
+
+  
+ 
+  
+ 

@@ -1,0 +1,61 @@
+.header {
+  text-align: center;
+  padding: 20px;
+  a {
+    display: block;
+    max-width: 60px;
+    margin: 0px auto;
+  }
+}
+
+.hero {
+  width: 100%;
+  background-repeat: no-repeat;
+  background: linear-gradient(#00000080, #00000080), url("/app/assets/hero-img.png");
+  color: white;
+  text-align: center;
+  .hero_content {
+    padding: 150px 0;
+  }
+}
+
+.hero_form {
+  padding: 50px 20px;
+  max-width: 600px;
+  margin: auto;
+  p {
+    color: #333;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+}
+
+.redirect {
+  padding: 70px;
+  p {
+    margin-bottom: 40px;
+    span {
+      margin-right: 5px;
+    }
+  }
+}
+
+.content {
+  height: 100vh;
+  p {
+    position: absolute;
+    top: calc(50% + 70px);
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 400;
+    color: #5e637b;
+  }
+}
+
+.install-input {
+  position: relative;
+  button {
+    position: absolute;
+    right: 0px;
+  }
+}

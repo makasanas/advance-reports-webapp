@@ -1,0 +1,173 @@
+{
+  "Sales By Country": {
+    "type": "string",
+    "value": "$shopifyData.shipping_address.country",
+    "valueType": "string",
+    "valueOperation": null
+  },
+  "count": {
+    "type": "number",
+    "value": 1,
+    "valueType": "string",
+    "valueOperation": null
+  },
+  "Discount": {
+    "type": "number",
+    "value": "$shopifyData.total_discounts",
+    "valueType": "string",
+    "valueOperation": "$toDecimal"
+  },
+  "Total Amount": {
+    "type": "number",
+    "value": "$shopifyData.total_price",
+    "valueType": "string",
+    "valueOperation": "$toDecimal"
+  },
+  "Net Amount": {
+    "type": "number",
+    "value": "$shopifyData.subtotal_price",
+    "valueType": "string",
+    "valueOperation": "$toDecimal"
+  },
+  "Total quantity": {
+    "type": "array",
+    "value": "$shopifyData.line_items.quantity",
+    "valueType": "number",
+    "valueOperation": "$sum"
+  },
+  "Total tax amount": {
+    "type": "number",
+    "value": "$shopifyData.total_tax",
+    "valueType": "string",
+    "valueOperation": "$toDecimal"
+  },
+  "Total tax name": {
+    "type": "array",
+    "value": "$shopifyData.tax_lines.title",
+    "valueType": "string",
+    "valueOperation": "$first"
+  },
+  "Total products": {
+    "type": "array",
+    "value": "$shopifyData.line_items",
+    "valueType": "number",
+    "valueOperation": "$size"
+  },
+  "Sales by Product": {
+    "type": "string",
+    "value": "$shopifyData.line_items.title",
+    "valueType": "string",
+    "unwind": "$shopifyData.line_items",
+    "valueOperation": null
+  },
+  "Sales by Overview": {
+    "type": "string",
+    "value": {
+      "$dateToString": {
+        "format": "%Y-%m-%d",
+        "date": { "$toDate": "$created" }
+      }
+    },
+    "valueType": "string",
+    "valueOperation": null
+  },
+  "Sales By Hour of Day": {
+    "type": "string",
+    "value": {
+      "$hour": {
+        "date": "$created",
+        "timezone": "+0530"
+      }
+    },
+    "valueType": "string",
+    "valueOperation": null
+  },
+  "Sales By Day of Week": {
+    "type": "string",
+    "value": {
+      "$dayOfWeek": {
+        "date": "$created"
+      }
+    },
+    "valueType": "string",
+    "valueOperation": null
+  },
+  "Sales by Month": {
+    "type": "string",
+    "value": {
+      "$month": {
+        "date": "$created"
+      }
+    },
+    "valueType": "string",
+    "valueOperation": null
+  },
+  "Sales by Vendor": {
+    "type": "string",
+    "value": "$shopifyData.line_items.vendor",
+    "valueType": "string",
+    "unwind": "$shopifyData.line_items",
+    "valueOperation": null
+  },
+  "Sales by Customer": {
+    "type": "string",
+    "value": "$shopifyData.customer.email",
+    "valueType": "string",
+    "valueOperation": null
+  },
+  "Customer First Name": {
+    "type": "string",
+    "value": "$shopifyData.customer.first_name",
+    "valueType": "string",
+    "valueOperation": null
+  },
+  "Customer Last Name": {
+    "type": "string",
+    "value": "$shopifyData.customer.last_name",
+    "valueType": "string",
+    "valueOperation": null
+  },
+  "Sales By Discount Code": {
+    "type": "string",
+    "value": "$shopifyData.discount_codes.code",
+    "valueType": "string",
+    "unwind": "$shopifyData.discount_codes",
+    "valueOperation": null
+  },
+  "Sales By State": {
+    "type": "string",
+    "value": "$shopifyData.shipping_address.province",
+    "valueType": "string",
+    "valueOperation": null
+  },
+  "Sales by Referring Site": {
+    "type": "string",
+    "value": "$shopifyData.referring_site",
+    "valueType": "string",
+    "valueOperation": null
+  },
+  "Sales By Channel": {
+    "type": "string",
+    "value": "$shopifyData.source_name",
+    "valueType": "string",
+    "valueOperation": null
+  },
+  "Sales by Payment Method": {
+    "type": "string",
+    "value": "$shopifyData.gateway",
+    "valueType": "string",
+    "valueOperation": null
+  },
+  "Tax per Country": {
+    "type": "string",
+    "value": "$shopifyData.billing_address.country",
+    "valueType": "string",
+    "valueOperation": null
+  },
+  "Tax per State": {
+    "type": "string",
+    "value": "$shopifyData.billing_address.province",
+    "valueType": "string",
+    "valueOperation": null
+  }
+}

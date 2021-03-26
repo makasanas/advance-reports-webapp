@@ -1,0 +1,35 @@
+<div class="pricing-content">
+    <div class="loading-grid" *ngIf="loading">
+        <app-loading></app-loading>
+    </div>
+    <div *ngIf="!loading">
+        <!-- <p class="light-noficication">Choose the best plan according to your products count.</p> -->
+        <div class="pricing_new">
+            <div *ngFor="let item of pricingPlans.plans; let i = index;" [ngClass]="planData.planName == item.name ? 'pricing-card active' : 'pricing-card'">
+                <div class="pricing-heading">
+                    <h2>{{item.name}}</h2>
+                </div>
+                <div class="pricing-info">
+                    <span class="days-left">{{trial.days}} days trial left</span>
+                    <label class="pricing-lable">
+            ${{item.price}}<span>/Month</span>
+          </label>
+                    <div class="pricing-features-list">
+                        <div class="feature">
+                            <img src="assets/rightmark.svg">
+                            <p>{{trial.days}}-day free trial</p>
+                        </div>
+                        <div class="feature" *ngFor="let feature of item.features">
+                            <img src="assets/rightmark.svg">
+                            <p>{{feature}}</p>
+                        </div>
+                    </div>
+                    <div class="pricing-btn">
+                        <button *ngIf="planData.planName != item.name && i > pricingPlans.activePlanIndex" (click)="acceptPlan(item.name , item.price)">Upgrade</button>
+                    </div>
+                    <span class="next-payment">Next Payment : {{planData.nextMonthStartDate | date : 'mediumDate'}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

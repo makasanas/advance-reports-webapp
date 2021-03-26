@@ -1,0 +1,41 @@
+<div class="faq-container">
+    <h1>Help And Support</h1>
+    <div class="sub-title">
+        <h2>Contact Info</h2>
+    </div>
+    <p style="padding: 10px;background: #f8f8f8;    margin: 10px 0px;font-weight: 400;font-size: 18px;">Better way to contact us is from our chat support on right bottom</p>
+
+    <div class="contact-div">
+        <div class="line">
+            <label>Email</label>
+            <span>hello@webrexstudio.com</span>
+        </div>
+        <div class="line">
+            <label>Mobile</label>
+            <span>+91 9724690996</span>
+        </div>
+    </div>
+
+    <div class="sub-title">
+        <h2>FAQs</h2>
+    </div>
+
+    <ul>
+        <li *ngFor="let faq of faqs; let i = index" class="faq" [ngClass]="{'active' : faq.open}" (click)="changeActive(i);">
+            <div class="title">
+                <h4>{{faq.title}}</h4>
+            </div>
+            <div class="f-content">
+                <p class="ans">{{faq.ans}}</p>
+            </div>
+            <div class="indicator">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 129 129" enable-background="new 0 0 129 129">
+          <g>
+            <path
+              d="m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z" />
+          </g>
+        </svg>
+            </div>
+        </li>
+    </ul>
+</div>

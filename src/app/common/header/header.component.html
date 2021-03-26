@@ -1,0 +1,90 @@
+<div class="header d-flex-between">
+    <div class="d-flex-start">
+        <div class="icon side-bar-handler" (click)="changeSidebar();">
+            <svg class="open" width="22px" height="15px" viewBox="0 0 22 15" version="1.1"
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <g id="open" transform="translate(1.000000, 1.000000)" stroke="#768389">
+                        <path d="M0,0.5 L20,0.5" id="Path-33" stroke-width="2"></path>
+                        <path d="M1,4.5 L12,4.5" id="Path-33" stroke-width="2"></path>
+                        <path d="M1,8.5 L12,8.5" id="Path-33" stroke-width="2"></path>
+                        <path d="M0,12.5 L20,12.5" id="Path-33" stroke-width="2"></path>
+                        <polyline id="Path-38" stroke-width="1.3"
+                            points="16.1279851 4.5 18.1279851 6.70954979 16.1279851 8.5"></polyline>
+                    </g>
+                </g>
+            </svg>
+            <svg class="close" width="22px" height="15px" viewBox="0 0 22 15" version="1.1"
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <g id="close" transform="translate(1.000000, 1.000000)" stroke="#768389">
+                        <path d="M0,0.5 L20,0.5" id="Path-33" stroke-width="2"></path>
+                        <path d="M1,4.5 L12,4.5" id="Path-33" stroke-width="2"></path>
+                        <path d="M1,8.5 L12,8.5" id="Path-33" stroke-width="2"></path>
+                        <path d="M0,12.5 L20,12.5" id="Path-33" stroke-width="2"></path>
+                        <polyline id="Path-38" stroke-width="1.3"
+                            transform="translate(17.127985, 6.500000) scale(-1, 1) translate(-17.127985, -6.500000) "
+                            points="16.1279851 4.5 18.1279851 6.70954979 16.1279851 8.5"></polyline>
+                    </g>
+                </g>
+            </svg>
+        </div>
+    </div>
+    <div class="d-flex-end">
+        <div class="left">
+            <!-- <div class="switch-btn">
+                <form [formGroup]="appForm">
+                    <div class="switch" [ngClass]="{'disableBtn':appForm.controls.appEnabled.value == false }">
+                        <input type="checkbox" id="switch" formControlName="appEnabled"
+                            (change)="statusChanged($event);" /><label for="switch">Toggle</label>
+                        <p>Recover Visitor with Live Tab</p>
+                    </div>
+                </form>
+            </div> -->
+        </div>
+        <div class="right">
+            <div class="store-details">
+                <div class="d-flex-center menu-title" (click)="changeMenu('header');">
+                    <!-- <div class="store-icon">
+                        <div class="image">
+                            <img src="assets/menu-icon-user.png">
+                        </div>
+                    </div> -->
+                    <div class="store-name d-flex-between">
+                        <span>{{storeName}}</span>
+                        <!-- <div class="icon ml-5">
+                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="451.847px"
+                                height="451.847px" viewBox="0 0 451.847 451.847"
+                                style="enable-background:new 0 0 451.847 451.847;" xml:space="preserve">
+                                <g>
+                                    <path
+                                        d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751
+                                   c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0
+                                   c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z" />
+                                </g>
+                            </svg>
+                        </div> -->
+                    </div>
+                </div>
+                <!-- 
+                <ul class="menu-content" [ngClass]="{ 'active' : menu.header}">
+                    <li>
+                        <a [routerLink]="['/settings']" (click)="changeMenu('header');">
+                            <img src="assets/menu-icon-settings.png">
+                            <p>Settings</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/install']" (click)="changeMenu('header');logout()">
+                            <img src="assets/menu-icon-logout.png">
+                            <p>Logout</p>
+                        </a>
+                    </li>
+                </ul> -->
+            </div>
+        </div>
+    </div>
+</div>

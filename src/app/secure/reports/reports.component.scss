@@ -1,0 +1,42 @@
+.reports-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.sales-table {
+    border-radius: 3px;
+    border: 1px solid #dfe3e8;
+    padding-top: 20px;
+    width: calc(50% - 10px);
+    margin-bottom: 20px;
+
+    .table-title {
+        color: #333;
+        font-size: 18px;
+        font-weight: 500;
+        padding: 0 20px;
+    }
+
+    ul {
+        list-style: none;
+        padding-top: 10px;
+
+        li {
+            color: #3e82b0;
+            padding: 15px 20px;
+            border-bottom: 1px solid #dfe3e8;
+            font-size: 14px;
+            cursor: pointer;
+
+            &:hover {
+                background: #f9fbfd;
+            }
+
+            &:last-child {
+                border: none;
+            }
+        }
+    }
+}

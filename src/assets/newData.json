@@ -1,0 +1,343 @@
+{
+  "list": [
+    {
+      "title": "Line Items",
+      "value": "line_items",
+      "subItems": [
+        {
+          "arraySelector": "line_items",
+          "itemSelector": "title",
+          "title": "Product Title",
+          "value": "$shopifyData.line_items.title",
+          "type": "string",
+          "isArray": true,
+          "isEditable": true
+        },
+        {
+          "arraySelector": "line_items",
+          "itemSelector": "quantity",
+          "title": "Order Quantity",
+          "value": "$shopifyData.line_items.quantity",
+          "type": "number",
+          "isArray": true,
+          "isEditable": true
+        },
+        {
+          "arraySelector": "line_items",
+          "itemSelector": "sku",
+          "title": "Product SKU",
+          "value": "$shopifyData.line_items.sku",
+          "type": "string",
+          "isArray": true,
+          "isEditable": true
+        },
+        {
+          "arraySelector": "line_items",
+          "itemSelector": "vendor",
+          "title": "Product Vendor",
+          "value": "$shopifyData.line_items.vendor",
+          "type": "string",
+          "isArray": true,
+          "isEditable": true
+        },
+        {
+          "arraySelector": "line_items",
+          "itemSelector": "price",
+          "title": "Product Price",
+          "value": "$shopifyData.line_items.price",
+          "type": "number",
+          "isArray": true,
+          "isEditable": true
+        },
+        {
+          "arraySelector": "line_items",
+          "itemSelector": "total_discount",
+          "title": "Product Discount",
+          "value": "$shopifyData.line_items.total_discount",
+          "type": "number",
+          "isArray": true,
+          "isEditable": true
+        }
+      ]
+    },
+    {
+      "title": "Customer Detail",
+      "value": "customer",
+      "subItems": [
+        {
+          "arraySelector": "customer",
+          "itemSelector": "id",
+          "title": "Customer id",
+          "value": "$shopifyData.customer.id",
+          "type": "number",
+          "isArray": false,
+          "isEditable": true
+        },
+        {
+          "arraySelector": "customer",
+          "itemSelector": "email",
+          "title": "Email",
+          "value": "$shopifyData.customer.email",
+          "type": "string",
+          "isArray": false,
+          "isEditable": true
+        },
+        {
+          "arraySelector": "customer",
+          "itemSelector": "first_name",
+          "title": "First name",
+          "value": "$shopifyData.customer.first_name",
+          "type": "string",
+          "isArray": false,
+          "isEditable": true
+        },
+        {
+          "arraySelector": "customer",
+          "itemSelector": "last_name",
+          "title": "Last name",
+          "value": "$shopifyData.customer.last_name",
+          "type": "string",
+          "isArray": false,
+          "isEditable": true
+        }
+      ]
+    },
+    {
+      "title": "Tax Details",
+      "value": "tax_lines",
+      "subItems": [
+        {
+          "arraySelector": "tax_lines",
+          "itemSelector": "title",
+          "title": "Tax Title",
+          "value": "$shopifyData.tax_lines.title",
+          "type": "string",
+          "isArray": true,
+          "isEditable": true
+        },
+        {
+          "arraySelector": "tax_lines",
+          "itemSelector": "price",
+          "title": "Tax amount",
+          "value": "$shopifyData.tax_lines.price",
+          "type": "number",
+          "isArray": true,
+          "isEditable": true
+        },
+        {
+          "arraySelector": "tax_lines",
+          "itemSelector": "rate",
+          "title": "Tax rate",
+          "value": "tax_lines.rate",
+          "type": "number",
+          "isArray": true,
+          "isEditable": true
+        }
+      ]
+    },
+    {
+      "title": "Discount",
+      "value": "discount_applications",
+      "subItems": [
+        {
+          "arraySelector": "discount_applications",
+          "itemSelector": "title",
+          "title": "Discount Title",
+          "value": "$shopifyData.discount_applications.title",
+          "type": "string",
+          "isArray": true,
+          "isEditable": true
+        },
+        {
+          "arraySelector": "discount_applications",
+          "itemSelector": "value",
+          "title": "Discount amount",
+          "value": "$shopifyData.discount_applications.value",
+          "type": "number",
+          "isArray": true,
+          "isEditable": true
+        }
+      ]
+    },
+    {
+      "title": "Order Details",
+      "value": "root_details",
+      "subItems": [
+        {
+          "arraySelector": "",
+          "itemSelector": "total_price",
+          "title": "Total Price",
+          "value": "root_details.total_price",
+          "type": "number",
+          "isArray": false,
+          "isEditable": true
+        },
+        {
+          "arraySelector": "",
+          "itemSelector": "order_number",
+          "title": "Order Number",
+          "value": "root_details.order_number",
+          "type": "number",
+          "isArray": false,
+          "isEditable": true
+        },
+        {
+          "arraySelector": "",
+          "itemSelector": "buyer_accepts_marketing",
+          "title": "Marketing Email Status",
+          "value": "root_details.buyer_accepts_marketing",
+          "type": "string",
+          "isArray": false,
+          "isEditable": true
+        },
+        {
+          "arraySelector": "",
+          "itemSelector": "referring_site",
+          "title": "Refering Site",
+          "value": "root_details.referring_site",
+          "type": "string",
+          "isArray": false,
+          "isEditable": true
+        },
+        {
+          "arraySelector": "",
+          "itemSelector": "landing_site",
+          "title": "Landing site",
+          "value": "root_details.landing_site",
+          "type": "string",
+          "isArray": false,
+          "isEditable": true
+        },
+        {
+          "arraySelector": "",
+          "itemSelector": "source_name",
+          "title": "Ordered From",
+          "value": "root_details.source_name",
+          "type": "string",
+          "isArray": false,
+          "isEditable": true
+        }
+      ]
+    },
+    {
+      "title": "Billing Address",
+      "value": "billing_address",
+      "subItems": [
+        {
+          "arraySelector": "billing_address",
+          "itemSelector": "country",
+          "title": "Country Name",
+          "value": "$shopifyData.billing_address.country",
+          "type": "string",
+          "isArray": false,
+          "isEditable": true
+        },
+        {
+          "arraySelector": "billing_address",
+          "itemSelector": "country_code",
+          "title": "Country Code",
+          "value": "$shopifyData.billing_address.country_code",
+          "type": "string",
+          "isArray": false,
+          "isEditable": true
+        },
+        {
+          "arraySelector": "billing_address",
+          "itemSelector": "city",
+          "title": "City",
+          "value": "$shopifyData.billing_address.city",
+          "type": "string",
+          "isArray": false,
+          "isEditable": true
+        },
+        {
+          "arraySelector": "billing_address",
+          "itemSelector": "province",
+          "title": "Province",
+          "value": "$shopifyData.billing_address.province",
+          "type": "string",
+          "isArray": false,
+          "isEditable": true
+        },
+        {
+          "arraySelector": "billing_address",
+          "itemSelector": "province_code",
+          "title": "Province code",
+          "value": "$shopifyData.billing_address.province_code",
+          "type": "string",
+          "isArray": false,
+          "isEditable": true
+        },
+        {
+          "arraySelector": "billing_address",
+          "itemSelector": "zip",
+          "title": "Zip code",
+          "value": "$shopifyData.billing_address.zip",
+          "type": "string",
+          "isArray": false,
+          "isEditable": true
+        }
+      ]
+    },
+    {
+      "title": "Shipping Address",
+      "value": "shipping_address",
+      "subItems": [
+        {
+          "arraySelector": "shipping_address",
+          "itemSelector": "country",
+          "title": "Country Name",
+          "value": "$shopifyData.shipping_address.country",
+          "type": "string",
+          "isArray": false,
+          "isEditable": true
+        },
+        {
+          "arraySelector": "shipping_address",
+          "itemSelector": "country_code",
+          "title": "Country Code",
+          "value": "$shopifyData.shipping_address.country_code",
+          "type": "string",
+          "isArray": false,
+          "isEditable": true
+        },
+        {
+          "arraySelector": "shipping_address",
+          "itemSelector": "city",
+          "title": "City",
+          "value": "$shopifyData.shipping_address.city",
+          "type": "string",
+          "isArray": false,
+          "isEditable": true
+        },
+        {
+          "arraySelector": "shipping_address",
+          "itemSelector": "province",
+          "title": "Province",
+          "value": "$shopifyData.shipping_address.province",
+          "type": "string",
+          "isArray": false,
+          "isEditable": true
+        },
+        {
+          "arraySelector": "shipping_address",
+          "itemSelector": "province_code",
+          "title": "Province code",
+          "value": "$shopifyData.shipping_address.province_code",
+          "type": "string",
+          "isArray": false,
+          "isEditable": true
+        },
+        {
+          "arraySelector": "shipping_address",
+          "itemSelector": "zip",
+          "title": "Zip code",
+          "value": "$shopifyData.shipping_address.zip",
+          "type": "string",
+          "isArray": false,
+          "isEditable": true
+        }
+      ]
+    }
+  ]
+}
