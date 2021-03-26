@@ -53,7 +53,7 @@ export class SalesReportComponent implements OnInit {
     private formBuilder: FormBuilder,
     private _salesReportService: SalesReportService,
     private calendar: NgbCalendar,
-    private ngbDateParserFormatter: NgbDateParserFormatter
+    public ngbDateParserFormatter: NgbDateParserFormatter
   ) {
     this.nestedRuleForm = this.formBuilder.group({
       isCondition: true,

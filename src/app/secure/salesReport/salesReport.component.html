@@ -36,7 +36,7 @@
         placeholder="yyyy-mm-dd"
         name="dpFromDate"
         [value]="ngbDateParserFormatter.format(fromDate)"
-        (input)="fromDate = validateInput(fromDate, dpFromDate.value)"
+        (input)="fromDate"
       />
       <div class="input-group-append">
         <button
@@ -55,7 +55,7 @@
         placeholder="yyyy-mm-dd"
         name="dpToDate"
         [value]="ngbDateParserFormatter.format(toDate)"
-        (input)="toDate = validateInput(toDate, dpToDate.value)"
+        (input)="toDate"
       />
       <div class="input-group-append">
         <button
@@ -112,10 +112,7 @@
   </div>
 </div>
 
-<div
-  class="table-responsive"
-  *ngIf="reportRestList.length != 0 && !dataLoading"
->
+<div class="table-responsive" *ngIf="reportRestList.length != 0">
   <ngx-datatable
     class="material"
     [rows]="reportRestList"
@@ -150,7 +147,9 @@
         <div class="add-rule-btn">
           <button
             class="btn"
-            (click)="addFromArray(nestedRuleForm.controls.compList, 'or')"
+            (click)="
+              addFromArray(nestedRuleForm.controls.compList, 'or', false)
+            "
           >
             <span>{{
               nestedRuleForm.value.compType === "and"

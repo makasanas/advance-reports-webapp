@@ -80,8 +80,6 @@ import { NoDataComponent } from "./common/no-data/no-data.component";
 
 import { NiceDateFormatPipe } from "./common/niceDateFormatPipe";
 
-import { TagListComponent } from "./secure/tag-list/tag-list.component";
-
 import { ReportsComponent } from "./secure/reports/reports.component";
 
 import { SalesReportComponent } from "./secure/salesReport/salesReport.component";
@@ -137,7 +135,6 @@ export function provideConfig() {
     HeaderComponent,
     NoDataComponent,
     NiceDateFormatPipe,
-    TagListComponent,
     ReportsComponent,
     SalesReportComponent
   ],
