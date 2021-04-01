@@ -1,24 +1,39 @@
 <div class="reports-content">
-  <div class="sales-table">
-    <h5 class="table-title">Sales</h5>
-    <ul>
-      <li
-        *ngFor="let salesReport of salesReportsList; let i = index"
-        (click)="goToUrl('sales', salesReport.title)"
-      >
-        {{ salesReport.title }}
-      </li>
-    </ul>
+  <div class="reports-column">
+    <div class="sales-table">
+      <h5 class="table-title">Sales</h5>
+      <ul>
+        <li
+          *ngFor="let salesReport of salesReportsList; let i = index"
+          (click)="goToUrl('sales', salesReport.title)"
+        >
+          {{ salesReport.title }}
+        </li>
+      </ul>
+    </div>
   </div>
-  <div class="sales-table">
-    <h5 class="table-title">Taxes</h5>
-    <ul>
-      <li
-        *ngFor="let taxReport of taxesReportsList; let i = index"
-        (click)="goToUrl('sales', taxReport.title)"
-      >
-        {{ taxReport.title }}
-      </li>
-    </ul>
+  <div class="reports-column">
+    <div class="sales-table">
+      <h5 class="table-title">Taxes</h5>
+      <ul>
+        <li
+          *ngFor="let taxReport of taxesReportsList; let i = index"
+          (click)="goToUrl('sales', taxReport.title)"
+        >
+          {{ taxReport.title }}
+        </li>
+      </ul>
+    </div>
+    <div class="sales-table">
+      <h5 class="table-title">Geo</h5>
+      <ul>
+        <li
+          *ngFor="let geoReport of geoReportsList; let i = index"
+          (click)="goToUrl('sales', geoReport.title)"
+        >
+          {{ geoReport.title }}
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

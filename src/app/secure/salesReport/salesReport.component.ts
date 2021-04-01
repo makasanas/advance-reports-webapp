@@ -61,8 +61,8 @@ export class SalesReportComponent implements OnInit {
       compList: this.formBuilder.array([])
     });
     this.columnForm = this.formBuilder.array([]);
-    this.fromDate = calendar.getToday();
-    this.toDate = calendar.getNext(calendar.getToday(), "d", 10);
+    // this.fromDate = calendar.getToday();
+    // this.toDate = calendar.getNext(calendar.getToday(), "d", 10);
   }
 
   ngOnInit() {
@@ -109,7 +109,8 @@ export class SalesReportComponent implements OnInit {
   createColumItem(): FormGroup {
     return this.formBuilder.group({
       type: "",
-      operationType: ""
+      operationType: "",
+      fieldType: ""
     });
   }
 
@@ -163,7 +164,6 @@ export class SalesReportComponent implements OnInit {
       return element.value == event.target.value;
     });
     control.get("type").setValue(found.type);
-    // this.onCompDataTypeChange(found.type);
   }
 
   onChangeDynamicValue(event) {
@@ -248,13 +248,13 @@ export class SalesReportComponent implements OnInit {
 
     if (this.startDate && this.endDate) {
       filter.filterList.push({
-        filterEle: "$created",
+        filterEle: "$shopifyData.created_at",
         filterEleType: "date",
         filterCompType: "$gte",
         compValue: this.startDate
       });
       filter.filterList.push({
-        filterEle: "$created",
+        filterEle: "$shopifyData.created_at",
         filterEleType: "date",
         filterCompType: "$lte",
         compValue: this.endDate

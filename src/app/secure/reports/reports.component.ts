@@ -10,6 +10,7 @@ import { SecureService } from "./../secure.service";
 export class ReportsComponent implements OnInit {
   public salesReportsList: any;
   public taxesReportsList: any;
+  public geoReportsList: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -41,9 +42,7 @@ export class ReportsComponent implements OnInit {
       {
         title: "Sales By Discount Code"
       },
-      {
-        title: "Sales By Country"
-      },
+
       {
         title: "Sales by Referring Site"
       },
@@ -60,6 +59,17 @@ export class ReportsComponent implements OnInit {
       },
       {
         title: "Tax per State"
+      }
+    ];
+    this.geoReportsList = [
+      {
+        title: "Sales By Country"
+      },
+      {
+        title: "Sales By State"
+      },
+      {
+        title: "Sales By City"
       }
     ];
   }

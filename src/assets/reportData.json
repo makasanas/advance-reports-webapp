@@ -65,7 +65,7 @@
     "value": {
       "$dateToString": {
         "format": "%Y-%m-%d",
-        "date": { "$toDate": "$created" }
+        "date": { "$toDate": "$shopifyData.created_at" }
       }
     },
     "valueType": "string",
@@ -75,7 +75,7 @@
     "type": "string",
     "value": {
       "$hour": {
-        "date": "$created",
+        "date": "$shopifyData.created_at",
         "timezone": "+0530"
       }
     },
@@ -86,7 +86,7 @@
     "type": "string",
     "value": {
       "$dayOfWeek": {
-        "date": "$created"
+        "date": "$shopifyData.created_at"
       }
     },
     "valueType": "string",
@@ -96,7 +96,7 @@
     "type": "string",
     "value": {
       "$month": {
-        "date": "$created"
+        "date": "$shopifyData.created_at"
       }
     },
     "valueType": "string",
@@ -137,6 +137,12 @@
   "Sales By State": {
     "type": "string",
     "value": "$shopifyData.shipping_address.province",
+    "valueType": "string",
+    "valueOperation": null
+  },
+  "Sales By City": {
+    "type": "string",
+    "value": "$shopifyData.shipping_address.city",
     "valueType": "string",
     "valueOperation": null
   },

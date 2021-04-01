@@ -8,10 +8,10 @@ import { ReportsComponent } from "./reports/reports.component";
 import { SalesReportComponent } from "./salesReport/salesReport.component";
 
 export const SECURE_ROUTES: Routes = [
-  {
-    path: "pricing",
-    component: PricingComponent
-  },
+  // {
+  //   path: "pricing",
+  //   component: PricingComponent
+  // },
   {
     path: "settings",
     component: SettingsComponent

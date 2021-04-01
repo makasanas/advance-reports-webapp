@@ -36,7 +36,7 @@
         placeholder="yyyy-mm-dd"
         name="dpFromDate"
         [value]="ngbDateParserFormatter.format(fromDate)"
-        (input)="fromDate"
+        (input)="(fromDate)"
       />
       <div class="input-group-append">
         <button
@@ -55,7 +55,7 @@
         placeholder="yyyy-mm-dd"
         name="dpToDate"
         [value]="ngbDateParserFormatter.format(toDate)"
-        (input)="toDate"
+        (input)="(toDate)"
       />
       <div class="input-group-append">
         <button
@@ -73,10 +73,10 @@
   <button class="btn" (click)="toggleFilterPopUp('isFilterPopUp')">
     <span>Manage Filters</span>
   </button>
-
+  <!-- 
   <button class="btn" (click)="toggleFilterPopUp('isColumnField')">
     <span>Edit columns</span>
-  </button>
+  </button> -->
 </div>
 
 <div class="sales-table">
@@ -123,6 +123,7 @@
     rowWidth="auto"
     [reorderable]="true"
     [scrollbarH]="true"
+    columnMode="force"
   >
   </ngx-datatable>
 </div>
@@ -227,7 +228,7 @@
       <form class="field-row" [formGroup]="control">
         <div class="item input">
           <select
-            formControlName="type"
+            formControlName="fieldType"
             (change)="onChangeOrderVariable($event, control)"
           >
             <optgroup
@@ -245,12 +246,16 @@
         </div>
         <div class="item input">
           <select formControlName="operationType">
-            <option
-              *ngFor="let dataType of compTypes; let i = index"
+            <!-- <option
+              *ngFor="
+                let dataType of onCompDataTypeChange(control.value.type);
+                let i = index
+              "
               value="{{ dataType.id }}"
             >
-              {{ dataType.title }}</option
-            >
+              {{ dataType.title }}</option> -->
+            <option value="$sum"> Sum </option>
+            <option value="$avg"> Average </option>
           </select>
         </div>
       </form>

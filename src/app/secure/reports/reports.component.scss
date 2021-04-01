@@ -5,11 +5,15 @@
     align-items: baseline;
 }
 
+.reports-column {
+    width: calc(50% - 10px);
+}
+
 .sales-table {
     border-radius: 3px;
     border: 1px solid #dfe3e8;
     padding-top: 20px;
-    width: calc(50% - 10px);
+    width: 100%;
     margin-bottom: 20px;
 
     .table-title {

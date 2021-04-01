@@ -507,8 +507,8 @@ ngx-datatable {
     text-align: left;
 
     &:first-child {
-        justify-content: center;
         align-items: center;
+        justify-content: flex-start;
     }
 
     &:nth-child(2) {
