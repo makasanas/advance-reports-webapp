@@ -246,14 +246,6 @@
         </div>
         <div class="item input">
           <select formControlName="operationType">
-            <!-- <option
-              *ngFor="
-                let dataType of onCompDataTypeChange(control.value.type);
-                let i = index
-              "
-              value="{{ dataType.id }}"
-            >
-              {{ dataType.title }}</option> -->
             <option value="$sum"> Sum </option>
             <option value="$avg"> Average </option>
           </select>
@@ -282,6 +274,9 @@
             formControlName="fieldType"
             (change)="onChangeOrderVariable($event, control)"
           >
+            <option value="" disabled>
+              Select Column
+            </option>
             <optgroup
               *ngFor="let dataItem of dataList; let i = index"
               [label]="dataItem.title"
@@ -297,6 +292,9 @@
         </div>
         <div class="item input">
           <select formControlName="fieldCondition">
+            <option value="" disabled>
+              Condition
+            </option>
             <option
               *ngFor="
                 let dataType of onCompDataTypeChange(control.value.type);
@@ -309,7 +307,12 @@
           </select>
         </div>
         <div class="item">
-          <input type="text" formControlName="fieldValue" value="static" />
+          <input
+            type="text"
+            formControlName="fieldValue"
+            value="static"
+            placeholder="Value"
+          />
         </div>
       </form>
       <ng-container
