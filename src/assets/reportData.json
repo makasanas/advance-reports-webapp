@@ -75,8 +75,7 @@
     "type": "string",
     "value": {
       "$hour": {
-        "date": "$shopifyData.created_at",
-        "timezone": "+0530"
+        "$toDate": "$shopifyData.created_at"
       }
     },
     "valueType": "string",
@@ -86,7 +85,7 @@
     "type": "string",
     "value": {
       "$dayOfWeek": {
-        "date": "$shopifyData.created_at"
+        "$toDate": "$shopifyData.created_at"
       }
     },
     "valueType": "string",
@@ -96,7 +95,7 @@
     "type": "string",
     "value": {
       "$month": {
-        "date": "$shopifyData.created_at"
+        "$toDate": "$shopifyData.created_at"
       }
     },
     "valueType": "string",
