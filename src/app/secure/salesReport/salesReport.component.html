@@ -148,6 +148,9 @@
         <div class="add-rule-btn">
           <button
             class="btn"
+            [ngClass]="{
+              active: nestedRuleForm.value.compType === 'and'
+            }"
             (click)="
               addFromArray(nestedRuleForm.controls.compList, 'or', false)
             "
@@ -158,6 +161,17 @@
                 : "Add parallel OR condition"
             }}</span>
           </button>
+          <!-- <button
+            class="btn"
+            [ngClass]="{
+              active: nestedRuleForm.value.compType === 'or'
+            }"
+            (click)="
+              addFromArray(nestedRuleForm.controls.compList, 'or', false)
+            "
+          >
+            <span>OR</span>
+          </button> -->
         </div>
         <div>
           <ul class="tag-rules">

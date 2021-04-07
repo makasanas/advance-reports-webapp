@@ -33,6 +33,18 @@
     .parallel-Tag-rule {
         .add-rule-btn {
             margin-bottom: 30px;
+
+            .btn {
+                background: #fff;
+                color: #848484;
+                border: 1px solid #babfc4;
+
+                &.active {
+                    background: #3e82b0;
+                    color: white;
+                    border: 1px solid #3e82b0;
+                }
+            }
         }
 
         .tag-rules {

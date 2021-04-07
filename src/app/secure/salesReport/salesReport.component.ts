@@ -103,6 +103,7 @@ export class SalesReportComponent implements OnInit {
   }
 
   addFromArray(control, type, isCondition): void {
+    console.log("nestedRuleForm", this.nestedRuleForm);
     return control.push(this.createItem(type, isCondition));
   }
 
