@@ -338,10 +338,10 @@ export class SalesReportComponent implements OnInit {
     let query = this.reportData[this.reportName].unwind
       ? [
           {
-            $unwind: this.reportData[this.reportName].unwind
+            $match: matchQuery
           },
           {
-            $match: matchQuery
+            $unwind: this.reportData[this.reportName].unwind
           },
           {
             $group: reportObject
@@ -409,7 +409,7 @@ export class SalesReportComponent implements OnInit {
           [filter.filterEle.split(".")[2]]:
             filter.filterEleType === "number"
               ? { [filter.filterCompType]: filter.compValue }
-              : new RegExp(filter.compValue, "i")
+              : { $regex: `${filter.compValue}`, $options: "i" }
         }
       }
     };
