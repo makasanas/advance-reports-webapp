@@ -229,22 +229,12 @@ export class SalesReportComponent implements OnInit {
   }
 
   salesReport() {
+    if (this.startDate && !this.endDate) {
+      return;
+    }
     let filter = {
       filterType: "$and",
-      filterList: [
-        // {
-        //   filterEle: "$shopifyData.total_price",
-        //   filterEleType: "number",
-        //   filterCompType: "$lte",
-        //   compValue: "90"
-        // }
-        // {
-        //   filterEle: "$shopifyData.email",
-        //   filterEleType: "string",
-        //   filterCompType: "$regexFind",
-        //   compValue: "Gmail"
-        // }
-      ]
+      filterList: []
     };
 
     if (this.startDate && this.endDate) {
@@ -318,12 +308,7 @@ export class SalesReportComponent implements OnInit {
       }
     });
 
-    let matchQuery =
-      filter.filterList.length > 0
-        ? {
-            [filter.filterType]: matchList
-          }
-        : {};
+    let matchQuery = { [filter.filterType]: matchList };
 
     fields.forEach(field => {
       reportObject = {
