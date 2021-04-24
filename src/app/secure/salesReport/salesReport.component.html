@@ -236,6 +236,10 @@
   </div>
 </div>
 
+<div class="loading-grid overlay-loading status-loading" *ngIf="loading">
+  <app-loading></app-loading>
+</div>
+
 <ng-template #columnTemplate let-controls="controls" let-value="value">
   <li *ngFor="let control of controls; let i = index" class="inner-tags">
     <div class="tag-wrapper">

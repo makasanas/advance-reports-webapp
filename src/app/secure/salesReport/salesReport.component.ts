@@ -40,6 +40,7 @@ export class SalesReportComponent implements OnInit {
   public dataList: any = [];
   public startDate: any = null;
   public endDate: any = null;
+  public loading: boolean = false;
 
   hoveredDate: NgbDate | null = null;
   fromDate: NgbDate;
@@ -232,6 +233,9 @@ export class SalesReportComponent implements OnInit {
     if (this.startDate && !this.endDate) {
       return;
     }
+    this.loading = true;
+    console.log("befote", this.loading);
+
     let filter = {
       filterType: "$and",
       filterList: []
@@ -369,6 +373,8 @@ export class SalesReportComponent implements OnInit {
         console.log(err);
       }
     );
+    this.loading = false;
+    console.log("aftre", this.loading);
   }
 
   getFilterType(filter) {
