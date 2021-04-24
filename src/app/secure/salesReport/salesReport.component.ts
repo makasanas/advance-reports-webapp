@@ -104,7 +104,6 @@ export class SalesReportComponent implements OnInit {
   }
 
   addFromArray(control, type, isCondition): void {
-    console.log("nestedRuleForm", this.nestedRuleForm);
     return control.push(this.createItem(type, isCondition));
   }
 
@@ -234,8 +233,6 @@ export class SalesReportComponent implements OnInit {
       return;
     }
     this.loading = true;
-    console.log("befote", this.loading);
-
     let filter = {
       filterType: "$and",
       filterList: []
@@ -374,7 +371,6 @@ export class SalesReportComponent implements OnInit {
       }
     );
     this.loading = false;
-    console.log("aftre", this.loading);
   }
 
   getFilterType(filter) {

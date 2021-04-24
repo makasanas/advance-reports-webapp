@@ -79,7 +79,6 @@ export class PricingComponent implements OnInit {
       }
     }
 
-    console.log(this.trial["days"]);
     this.trial["start"] = !this.user.trial_start
       ? new Date()
       : this.user.trial_start;
@@ -97,7 +96,6 @@ export class PricingComponent implements OnInit {
 
       this.acceptPlan(plan.name, plan.price);
       this.pricingPlans.activePlan = plan.name;
-      // console.log(this.pricingPlans);
     } else {
       this.getPlan();
     }
@@ -107,14 +105,12 @@ export class PricingComponent implements OnInit {
     this.loading = true;
     this.pricingService.getPlan().subscribe(
       res => {
-        // console.log(res.data);
         this.loading = false;
         this.planData = res.data;
         this.pricingPlans.activePlan = res.data.planName;
         this.pricingPlans.activePlanIndex = this.pricingPlans.plans.findIndex(
           p => p.name == this.pricingPlans.activePlan
         );
-        // console.log(this.pricingPlans);
       },
       err => {}
     );

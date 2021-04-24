@@ -97,11 +97,7 @@ export class SettingsComponent implements OnInit {
   getUser() {
     this.settingsService.getUser().subscribe(
       res => {
-        // console.log(res.data)
         this.storeData = res.data;
-        // this.storeName = res.data.storeName;
-        // this.emailID = res.data.email;
-        // this.phone = res.data.phone;
       },
       err => {}
     );
@@ -110,7 +106,6 @@ export class SettingsComponent implements OnInit {
   getSyncData() {
     this.settingsService.getSyncData().subscribe(
       res => {
-        console.log(res.data);
         this.syncData = res.data;
       },
       err => {
@@ -156,7 +151,6 @@ export class SettingsComponent implements OnInit {
     this.syncProcess[type] = true;
     this.secureService.sync(type).subscribe(
       res => {
-        console.log(res);
         this.syncProcess[type] = false;
         this.getSyncData();
       },
@@ -174,7 +168,6 @@ export class SettingsComponent implements OnInit {
     this.syncProcess["orders"] = true;
     this.settingsService.syncOrders().subscribe(
       res => {
-        console.log(res);
         this.syncProcess["orders"] = false;
         this.syncData.orderSync = res.data.orderSync;
       },
@@ -196,7 +189,6 @@ export class SettingsComponent implements OnInit {
       })
       .subscribe(
         res => {
-          console.log(res);
           this.getAppStatus();
         },
         err => {
@@ -211,9 +203,7 @@ export class SettingsComponent implements OnInit {
     // this.enableForm = user.appEnabled;
     this.secureService.fetchUser().subscribe(
       res => {
-        console.log(res["data"]["appEnabled"]);
         this.appForm.controls.appEnabled.setValue(res["data"]["appEnabled"]);
-        console.log(this.appForm.controls.appEnabled.value);
       },
       err => {
         console.log(err);

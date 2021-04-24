@@ -95,7 +95,6 @@ export class SecureComponent implements OnInit {
         //   ['Credit', this.userData.credit],
         //   ['Shopify Plan', this.userData.plan_display_name]
         // ]]])
-        console.log($crisp);
       };
     }
   }
@@ -114,7 +113,6 @@ export class SecureComponent implements OnInit {
   changeSidebar(event) {
     this.fullSidebar = event;
     setTimeout(() => {
-      console.log("asdfasd");
       window.dispatchEvent(new Event("resize"));
     }, 500);
   }

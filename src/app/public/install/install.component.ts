@@ -40,7 +40,6 @@ export class InstallComponent implements OnInit {
     if (!this.installForm.invalid) {
       if (this.installForm.controls.shopUrl.value.includes('http')) {
         let tmp = this.installForm.controls.shopUrl.value.split('//')[1];
-         console.log(tmp);
 
         this.checkExisting(tmp);
       } else {
@@ -58,7 +57,6 @@ export class InstallComponent implements OnInit {
   checkExisting(url) {
     this.tmpUrl = url;
     var installUrl = `https://${this.tmpUrl}/admin/oauth/authorize?client_id=${environment.appId}&scope=${environment.appScope}&redirect_uri=${window.location.origin}/app/auth`;
-    console.log(installUrl);
      document.location.href = installUrl;
   }
 }

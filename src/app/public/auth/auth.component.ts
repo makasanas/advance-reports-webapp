@@ -33,7 +33,6 @@ export class AuthComponent implements OnInit {
   }
 
   getAccessToken(query) {
-    // console.log(query);
     this.authService.getAccessToken(query).subscribe(
       res => {
         localStorage.setItem("token", res.data.token);

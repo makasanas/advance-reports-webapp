@@ -7,9 +7,7 @@ import { Injectable } from "@angular/core";
 })
 export class GetDataService {
   constructor(private http: HttpClient) {
-    this.getJSON().subscribe(data => {
-      // console.log(data);
-    });
+    this.getJSON().subscribe(data => {});
   }
 
   public getJSON(): Observable<any> {
