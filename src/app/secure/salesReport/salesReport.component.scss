@@ -449,8 +449,23 @@ ngb-datepicker {
     background-color: #00ced1;
 }
 
+.report-container {
+    position: relative;
+}
+
 .loading-grid {
     position: relative;
-    height: calc(100vh - 40px);
     width: 100%;
+}
+
+
+.loading-grid.overlay-loading {
+    padding: 0px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    // background: rgba(195, 195, 195, 0.2);
+    width: 100%;
+    height: calc(100vh - 250px);
+    z-index: 9999;
 }

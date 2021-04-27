@@ -79,6 +79,8 @@ export class SalesReportComponent implements OnInit {
 
   getData() {
     this.dataList = [];
+    this.loading = true;
+
     this._dataService.getJSON().subscribe(data => {
       this.dataList = data.list;
     });
@@ -365,12 +367,13 @@ export class SalesReportComponent implements OnInit {
         });
 
         this.tableColumn[0].name = this.reportName;
+        this.loading = false;
       },
       err => {
         console.log(err);
+        this.loading = false;
       }
     );
-    this.loading = false;
   }
 
   getFilterType(filter) {
