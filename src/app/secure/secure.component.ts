@@ -1,11 +1,8 @@
 import { Component, OnInit, Renderer2 } from "@angular/core";
 import { SecureService } from "./secure.service";
-import {
-  CanActivate,
-  Router,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot
-} from "@angular/router";
+import {  Router } from "@angular/router";
+import { environment } from "./../../environments/environment";
+
 declare var $crisp;
 declare global {
   interface Window {
@@ -13,6 +10,7 @@ declare global {
     CRISP_WEBSITE_ID: any;
   }
 }
+import * as Sentry from "@sentry/angular";
 
 @Component({
   selector: "app-secure",
@@ -52,7 +50,13 @@ export class SecureComponent implements OnInit {
         this.secureService.setUser(res.data);
         this.fetchUser = true;
         this.loadChat();
-        // this.secureService.sendRoute(this.secureService.getUser());
+
+        Sentry.configureScope((scope) => {
+          scope.setUser({
+            'id': res.data._id,
+            'username': res.data.shopUrl
+          });
+        });
       },
       err => {
         console.log(err);
@@ -62,13 +66,12 @@ export class SecureComponent implements OnInit {
 
   loadChat() {
     this.userData = this.secureService.getUser();
-
     if (
       !this.userData.admin &&
       this.userData.domain != "dev-srore.myshopify.com"
     ) {
       window.$crisp = [];
-      window.CRISP_WEBSITE_ID = "e88807ec-c2cd-4778-91f4-99a155c5acf4";
+      window.CRISP_WEBSITE_ID = environment.crispId;
       this.addJsToElement("https://client.crisp.chat/l.js").onload = () => {
         window.$crisp.push(["set", "user:email", [this.userData.email]]);
         window.$crisp.push(["set", "user:nickname", [this.userData.storeName]]);
